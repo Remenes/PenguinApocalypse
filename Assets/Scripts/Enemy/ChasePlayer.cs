@@ -13,6 +13,10 @@ public class ChasePlayer : MonoBehaviour
     SpriteRenderer spriteRend;
     AttackPlayer attack;
 
+    private bool defaultFlipX;
+    private bool defaultFlipY;
+
+    [HideInInspector]
     public float distFromPlayer
     {
         get
@@ -27,6 +31,9 @@ public class ChasePlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRend = GetComponentInChildren<SpriteRenderer>();
         attack = GetComponent<AttackPlayer>();
+
+        defaultFlipX = spriteRend.flipX;
+        defaultFlipY = spriteRend.flipY;
     }
 	
 	private void FixedUpdate ()
@@ -38,6 +45,7 @@ public class ChasePlayer : MonoBehaviour
     {
         if (distFromPlayer < senseDist && distFromPlayer > targetDist) //In range but can't attack, chase player
         {
+            Debug.Log("Following player.");
             Vector2 playerDirection = player.transform.position - transform.position;
             Vector2 force = playerDirection.normalized * speed * rb.mass;
 
@@ -50,6 +58,7 @@ public class ChasePlayer : MonoBehaviour
         }
         else if (distFromPlayer < senseDist && distFromPlayer < targetDist) //In range and can attack, attack 
         {
+            Debug.Log("Attacking palyer.");
             StopChase();
             attack.Attack();
         }
@@ -64,16 +73,25 @@ public class ChasePlayer : MonoBehaviour
             {
                 //transform.LookAt(player.transform);
                 transform.right = player.transform.position - transform.position;
+
+                if (player.transform.position.x >= transform.position.x) //Player is to the right, face right
+                {
+                    spriteRend.flipY = defaultFlipY;
+                }
+                else if (player.transform.position.x < transform.position.x) //Player is to the left, face left
+                {
+                    spriteRend.flipY = !defaultFlipY;
+                }
             }
             else if (lookAtPlayer == lookAtOptions.Flip)
             {
                 if(player.transform.position.x >= transform.position.x) //Player is to the right, face right
                 {
-                    spriteRend.flipX = false;
+                    spriteRend.flipX = defaultFlipX;
                 }
                 else if (player.transform.position.x < transform.position.x) //Player is to the left, face left
                 {
-                    spriteRend.flipX = true;
+                    spriteRend.flipX = !defaultFlipX;
                 }
             }
         }

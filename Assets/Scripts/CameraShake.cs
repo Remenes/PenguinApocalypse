@@ -30,7 +30,7 @@ public class CameraShake : MonoBehaviour {
 		if (currentShakeTime > 0) {
             if (currentDelayShakeTime > delayBetweenShakes) {
                 currentDelayShakeTime = 0;
-                transform.localPosition = Vector2To3.convert(Random.insideUnitCircle * shakeStrength);
+                transform.localPosition = Helper.Vector2toVector3(Random.insideUnitCircle * shakeStrength);
             }
             currentShakeTime -= Time.deltaTime;
             currentDelayShakeTime += Time.deltaTime;

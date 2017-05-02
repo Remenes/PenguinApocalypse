@@ -46,7 +46,7 @@ public class CameraFollow : MonoBehaviour {
     private void followPlayer_Damp() {
         //Vector2 newPosition = Vector2.Lerp(transform.position, player.transform.position, /*Vector2.Distance(player.transform.position, transform.position) * Time.fixedDeltaTime*/ Time.deltaTime * timeToInterpolate);
         Vector2 newPosition = Vector2.SmoothDamp(transform.position, player.transform.position, ref currentVelocity, timeToInterpolate, Mathf.Infinity, Time.deltaTime);
-        transform.position = Vector2To3.convert(newPosition, transform.position.z);
+        transform.position = Helper.Vector2toVector3(newPosition, transform.position.z);
     }
 
     //Another way to move camera. Smoothly follow where to the mouse points. Sort of like a zoom for the mouse, with the origins to the player
@@ -66,6 +66,6 @@ public class CameraFollow : MonoBehaviour {
 
         //Change Mouse to target Location
         Vector2 newPosition = Vector2.SmoothDamp(transform.position, targetPosition, ref currentVelocity, timeToInterpolate, Mathf.Infinity, Time.deltaTime);        
-        transform.position = Vector2To3.convert(newPosition, zOffset);
+        transform.position = Helper.Vector2toVector3(newPosition, zOffset);
     }
 }
