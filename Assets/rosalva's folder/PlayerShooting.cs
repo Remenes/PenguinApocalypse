@@ -19,14 +19,21 @@ public class PlayerShooting : MonoBehaviour {
         GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
         //give initial veloctiy
         shot_rg = shot.GetComponent<Rigidbody2D>();
-        shot_rg.velocity = new Vector3(0, projectile_speed, 0);
+        //shot_rg.velocity = new Vector3(0, projectile_speed, 0);
+
+        Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 dir = (Input.mousePosition - sp).normalized;
+        shot_rg.AddForce(dir*200);
+
     }
 
-	// Update is called once per frame
+	
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
-            InvokeRepeating("Fire", 0.00001f, .02f);
-        if (Input.GetKeyUp(KeyCode.Space))
-            CancelInvoke("Fire");
+        if (Input.GetMouseButtonDown(0))
+          InvokeRepeating("Fire", 0.00001f, .02f);
+        if (Input.GetMouseButtonUp(0))
+          CancelInvoke("Fire");
+
+        //transform.Translate(Vector3.forward * Time.deltaTime);
     }
 }
