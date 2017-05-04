@@ -18,7 +18,13 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
         getInputAxis();
         movePlayer();
-	}
+
+        // attempted to rotate game object based on direction of movement
+        //if (transform.rotation.y == 0 && horiMovement > 0)
+        //    transform.Rotate(0, 180, 0);
+        //if (transform.rotation.y == 180f && horiMovement < 0)
+        //    transform.Rotate(0, -180, 0);
+    }
 
     private void movePlayer() {
         Vector3 offset = new Vector2(horiMovement, vertMovement);
