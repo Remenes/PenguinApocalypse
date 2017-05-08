@@ -8,15 +8,16 @@ public class PlayerShooting : MonoBehaviour {
     private Rigidbody2D shot_rg;
     public float projectile_speed = 150;
 
+    private Transform playerShootingPoint;
+
 	// Use this for initialization
 	void Start () {
-        
-		
+        playerShootingPoint = transform.GetChild(0);
 	}
 
     void Fire()
     {
-        GameObject shot = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+        GameObject shot = Instantiate(projectile, playerShootingPoint.position, Quaternion.identity) as GameObject;
         //give initial veloctiy
         shot_rg = shot.GetComponent<Rigidbody2D>();
         //shot_rg.velocity = new Vector3(0, projectile_speed, 0);
