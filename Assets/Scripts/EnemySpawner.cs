@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour {
     private Dictionary<EnemyType, int> enemiesRemaining = new Dictionary<EnemyType, int>();
     private Dictionary<EnemyType, float> enemiesSpawnTime = new Dictionary<EnemyType, float>();
 
-    private enum SpawnType { ConsecutiveSpawn, LinkSpawnAtAllSpawnPoints }
+    private enum SpawnType { ConsecutiveSpawn, LinkSpawnAtAllSpawnPoints, CycleThroughPoints }
     [SerializeField]
     private SpawnType spawnType;
 
@@ -48,6 +48,8 @@ public class EnemySpawner : MonoBehaviour {
                     spawnEnemyIndividually(enemy);
                 } else if (spawnType == SpawnType.LinkSpawnAtAllSpawnPoints) {
                     spawnByLinkingAtSpawnLocations(enemy);
+                } else if (spawnType == SpawnType.CycleThroughPoints) {
+                    spawnByCyclingThroughPoints(enemy);
                 }
             }
             elapsedTime += Time.deltaTime;
@@ -70,6 +72,16 @@ public class EnemySpawner : MonoBehaviour {
             if (enemiesRemaining[enemy] <= 0)
                 return;
         }
+    }
+
+    int spawnPointIndex = 0;
+    private void spawnByCyclingThroughPoints(EnemyType enemy) {
+        if (spawnPointIndex >= numOfEnemySpawnPoints)
+            spawnPointIndex = 0;
+        CircleCollider2D spawnPoint = enemySpawnPoints[spawnPointIndex++];
+        Vector2 newEnemyPosition = (Vector2)spawnPoint.transform.position + Random.insideUnitCircle * spawnPoint.radius;
+        GameObject newEnemy = Instantiate(enemies[(int)enemy], newEnemyPosition, new Quaternion());
+        enemiesRemaining[enemy]--;
     }
 
     public void StartEnemySpawner(EnemyType enemy, int numOfEnemies, float? newSpawningTime = null) {
