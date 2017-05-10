@@ -6,11 +6,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private float horiMovement;
     private float vertMovement;
+    private bool facingLeft;
 
     public float MoveSpeed = 5f;
     
     // Use this for initialization
 	void Start () {
+
+        facingLeft = true;
 		
 	}
 	
@@ -33,10 +36,22 @@ public class PlayerMovement : MonoBehaviour {
         offset *= MoveSpeed;
 
         transform.position += offset * Time.deltaTime;
+        flip(horiMovement);
     }
 
     private void getInputAxis() {
         horiMovement = Input.GetAxis("Horizontal");
         vertMovement = Input.GetAxis("Vertical");
+    }
+
+    private void flip(float horizontal)
+    {
+        if (horizontal > 0 && facingLeft || horizontal < 0 && !facingLeft)
+        {
+            facingLeft = !facingLeft;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
     }
 }
