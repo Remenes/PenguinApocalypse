@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
     public KeyCode SprintKey = KeyCode.Space;
     public float SprintTime = 1f;
 
+    public bool is3D = false;
     
     // Use this for initialization
 	void Start () {
@@ -52,7 +53,15 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void movePlayer() {
-        Vector3 offset = new Vector2(horiMovement, vertMovement);
+        Vector3 offset;
+        if (is3D)
+        {
+            offset = new Vector3(horiMovement, 0, vertMovement);
+        }
+        else
+        {
+            offset = new Vector2(horiMovement, vertMovement);
+        }
         if (offset.sqrMagnitude > 1)
             Vector3.Normalize(offset);
         offset *= speed;
