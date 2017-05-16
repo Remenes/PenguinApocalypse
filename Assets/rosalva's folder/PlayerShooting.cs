@@ -7,6 +7,8 @@ public class PlayerShooting : MonoBehaviour {
     public GameObject projectile;
     private Rigidbody2D shot_rg;
     public float projectile_speed = 150;
+    public float repeat_rate = .2f;
+
 
 	// Use this for initialization
 	void Start () {
@@ -23,14 +25,14 @@ public class PlayerShooting : MonoBehaviour {
 
         Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 dir = (Input.mousePosition - sp).normalized;
-        shot_rg.AddForce(dir*200);
+        shot_rg.AddForce(dir*projectile_speed);
 
     }
 
 	
 	void Update () {
         if (Input.GetMouseButtonDown(0))
-          InvokeRepeating("Fire", 0.00001f, .02f);
+          InvokeRepeating("Fire", 0.00001f, repeat_rate);
         if (Input.GetMouseButtonUp(0))
           CancelInvoke("Fire");
 

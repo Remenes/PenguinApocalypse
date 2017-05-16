@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1875410555859912, guid: 10d114aa1e64a774994759dfeae3e0b6, type: 2}
   projectile_speed: 150
+  repeat_rate: 0.2
 --- !u!4 &1060674222 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4114027684045954, guid: f2009edd6d5440546ab759addb157b7b,
