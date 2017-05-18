@@ -8,8 +8,8 @@ public class ProjectileDamage : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "Enemy")
-            coll.gameObject.GetComponent<Health>().takeDamage(damage);
+        //if (coll.gameObject.tag == "Enemy")
+          //  coll.gameObject.GetComponent<Health>().takeDamage(damage);
         Destroy(gameObject);
     }
 

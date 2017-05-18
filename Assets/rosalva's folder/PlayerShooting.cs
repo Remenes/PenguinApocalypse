@@ -26,13 +26,12 @@ public class PlayerShooting : MonoBehaviour {
 
         Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);
         Vector3 dir = (Input.mousePosition - sp).normalized;
-<<<<<<< HEAD
+
         shot_rg.AddForce(dir*projectile_speed);
 
-=======
+
 		shot_rg.velocity = dir*projectile_speed;
 		Destroy (shot, 3f);
->>>>>>> origin/master
     }
 
 	
