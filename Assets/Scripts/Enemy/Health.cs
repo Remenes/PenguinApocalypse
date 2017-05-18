@@ -44,9 +44,5 @@ public class Health : MonoBehaviour
     public void Die()
     {
         OnDeath();
-
-        //Maybe spawn a particle system or something?
-
-        Destroy(gameObject);
     }
 }
