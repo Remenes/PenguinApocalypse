@@ -24,5 +24,11 @@ public class PlayerHealth : MonoBehaviour {
             currentHealth = maxHealth;
     }
 
-	//void Update () { TakeDamage(20); }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<HealthPickUp>() != null)
+            RestoreHealth(collision.gameObject.GetComponent<HealthPickUp>().health);
+    }
+
+    //void Update () { TakeDamage(20); }
 }
