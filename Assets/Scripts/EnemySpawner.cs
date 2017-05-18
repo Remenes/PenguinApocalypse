@@ -33,8 +33,8 @@ public class EnemySpawner : MonoBehaviour {
         setEnemySpawnPoints();
 
         //TEST
-        StartEnemySpawner(EnemyType.DEFAULT, 10, 1);
-        StartEnemySpawner(EnemyType.BIG, 1, 10);
+        StartEnemySpawner(EnemyType.DEFAULT, 100, 3);
+        StartEnemySpawner(EnemyType.BIG, 100, 10);
     }
 
     protected virtual IEnumerator spawnEnemy(EnemyType enemy) {

@@ -47,12 +47,12 @@ public class ChasePlayer : MonoBehaviour
     {
         if (distFromPlayer < senseDist && distFromPlayer > targetDist) //In range but can't attack, chase player
         {
-            Debug.Log("Following player.");
+//            Debug.Log("Following player.");
             Chase();
         }
         else if (distFromPlayer < senseDist && distFromPlayer < targetDist) //In range and can attack, attack 
         {
-            Debug.Log("Attacking palyer.");
+//            Debug.Log("Attacking palyer.");
             StopChase();
             attack.Attack();
         }

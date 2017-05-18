@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ProjectileDamage : MonoBehaviour {
 
-    float damage = 10;
+    public float damage = 10;
 
-    void OnTriggerEnter(Collider coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        //if (coll.gameObject.tag == "Enemy")
-          //  coll.gameObject.GetComponent<Health>().takeDamage(damage);
-        Destroy(gameObject);
+		if (coll.gameObject.tag == "Enemy") {
+			coll.gameObject.GetComponent<Health> ().TakeDamage (damage);
+			//Destroy (coll.gameObject);
+			Destroy (gameObject);
+		}
     }
 
 	void Start () {

@@ -20,7 +20,7 @@ public class EnemyDeath : MonoBehaviour
     private void EnemyDie ()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, /*0.5f*/ 0);
 	}
 
     private void OnDestroy()

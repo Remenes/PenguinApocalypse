@@ -20,6 +20,7 @@ public class AttackPlayer : MonoBehaviour
         {
             Debug.Log(gameObject.name + " has just attacked.");
             player.GetComponent<Health>().TakeDamage(damage);
+			Camera.main.GetComponent<CameraShake> ().ShakeScreen (.2f, 1);
             lastAttack = Time.time;
         }
     }
