@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 50740228151223132}
   - component: {fileID: 114864841180554290}
   - component: {fileID: 114968791328968932}
+  - component: {fileID: 114129513497930742}
+  - component: {fileID: 114494932960917828}
   m_Layer: 0
   m_Name: BiggerEnemy
   m_TagString: Untagged
@@ -63,6 +65,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &114129513497930742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373839346384956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bb972cebe13a84e835e7aaa340158b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 30
+--- !u!114 &114494932960917828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373839346384956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aafdc056d0982478e5fb514184ad21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114864841180554290
 MonoBehaviour:
   m_ObjectHideFlags: 1
