@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 1715471159}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -873,10 +873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  SprintSpeed: 20
-  SprintKey: 32
-  SprintTime: 1
-  is3D: 1
 --- !u!65 &1862233566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -916,6 +912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 1875410555859912, guid: 10d114aa1e64a774994759dfeae3e0b6, type: 2}
   projectile_speed: 150
+  repeat_rate: 0.2
 --- !u!114 &1862233569
 MonoBehaviour:
   m_ObjectHideFlags: 0
