@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class ChasePlayer : MonoBehaviour
+public class ChasePlayer3D : MonoBehaviour
 {
     public float speed;
     public float senseDist;
@@ -10,7 +10,7 @@ public class ChasePlayer : MonoBehaviour
     public lookAtOptions lookAtPlayer;
 
     GameObject player;
-    Rigidbody2D rb;
+    Rigidbody rb;
     SpriteRenderer spriteRend;
     AttackPlayer attack;
     NavMeshAgent nav;
@@ -24,13 +24,13 @@ public class ChasePlayer : MonoBehaviour
     {
         get
         {
-            return Vector2.Distance(transform.position, player.transform.position);
+            return Vector3.Distance(transform.position, player.transform.position);
         }
     }
 	
 	private void Awake ()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRend = GetComponentInChildren<SpriteRenderer>();
         attack = GetComponent<AttackPlayer>();
@@ -99,9 +99,9 @@ public class ChasePlayer : MonoBehaviour
         if (!foundNavMesh) //No navmesh found, use default AI
         {
             Vector3 playerDirection = player.transform.position - transform.position;
-            Vector3 force = playerDirection.normalized * speed * rb.mass;
+            Vector3 force = playerDirection.normalized * speed;
 
-            rb.AddForce(force, ForceMode2D.Force);
+            rb.AddForce(force, ForceMode.Acceleration);
 
             if (rb.velocity.magnitude > speed)
             {
