@@ -18,7 +18,7 @@ public class AttackPlayer : MonoBehaviour
     {
         if (lastAttack + fireRate < Time.time) //If enough time has passed to attack again, attack
         {
-            Debug.Log(gameObject.name + " has just attacked.");
+            //Debug.Log(gameObject.name + " has just attacked.");
             player.GetComponent<Health>().TakeDamage(damage);
 			Camera.main.GetComponent<CameraShake> ().ShakeScreen (.2f, 1);
             lastAttack = Time.time;
