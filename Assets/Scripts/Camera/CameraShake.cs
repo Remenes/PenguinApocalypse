@@ -13,9 +13,11 @@ public class CameraShake : MonoBehaviour {
 
     private float currentDelayShakeTime;
 
+    private Vector3 initialCameraPos;
+
 	// Use this for initialization
 	void Start () {
-		
+        initialCameraPos = Camera.main.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -30,13 +32,13 @@ public class CameraShake : MonoBehaviour {
 		if (currentShakeTime > 0) {
             if (currentDelayShakeTime > delayBetweenShakes) {
                 currentDelayShakeTime = 0;
-                transform.localPosition = Helper.Vector2toVector3(Random.insideUnitCircle * shakeStrength);
+                transform.localPosition = initialCameraPos + Helper.Vector2toVector3(Random.insideUnitCircle * shakeStrength);
             }
             currentShakeTime -= Time.deltaTime;
             currentDelayShakeTime += Time.deltaTime;
         }
         else {
-            transform.localPosition = Vector3.zero;
+            transform.localPosition = initialCameraPos;
         }
 	}
 
