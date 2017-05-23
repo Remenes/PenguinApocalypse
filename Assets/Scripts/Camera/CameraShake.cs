@@ -17,7 +17,7 @@ public class CameraShake : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        initialCameraPos = Camera.main.transform.position;
+        initialCameraPos = Camera.main.transform.localPosition;
 	}
 	
 	// Update is called once per frame
@@ -43,7 +43,7 @@ public class CameraShake : MonoBehaviour {
 	}
 
     public void ShakeScreen(float shakeTime, float shakeStrength = DEFAULT_SHAKE_STRENGTH) {
-        print("Shake");
+        //print("Shake");
         this.currentShakeTime = shakeTime;
         this.shakeStrength = shakeStrength;
     }

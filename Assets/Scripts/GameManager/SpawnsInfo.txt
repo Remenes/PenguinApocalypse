@@ -1,0 +1,17 @@
+# This is a comment
+# ENEMYTYPES: DEFAULT, BIG
+# Format is in: 'EnemyType:Amount'
+# Include the Level before it with the Format: '---- Level ----'
+# The number for the level doesn't mean anything
+# It's just to give an indication to the us what the level actually is
+# The ----, however, is necessary to keep track of the Levels
+
+----Level 01----
+DEFAULT:10
+----Level 02----
+DEFAULT:18
+BIG:1
+
+----Level 03----
+DEFAULT:20
+BIG:4

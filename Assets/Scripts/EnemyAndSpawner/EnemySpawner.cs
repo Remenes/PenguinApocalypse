@@ -14,15 +14,15 @@ public class EnemySpawner : MonoBehaviour {
         Transform enemySpawnPoints_Parent = transform.GetChild(0);
         enemySpawnPoints = enemySpawnPoints_Parent.GetComponentsInChildren<CircleCollider2D>();
         numOfEnemySpawnPoints = enemySpawnPoints.Length;
-        print(numOfEnemySpawnPoints);
-        print(enemySpawnPoints[0].transform);
-        print(enemySpawnPoints[1].transform);
     }
     private int numOfEnemySpawnPoints;
 
     public GameObject[] enemies;
     private Dictionary<EnemyType, int> enemiesRemaining = new Dictionary<EnemyType, int>();
     private Dictionary<EnemyType, float> enemiesSpawnTime = new Dictionary<EnemyType, float>();
+    public Dictionary<EnemyType, float> getSpawnTimes {
+        get { return enemiesSpawnTime; }
+    }
 
     private enum SpawnType { ConsecutiveSpawn, LinkSpawnAtAllSpawnPoints, CycleThroughPoints }
     [SerializeField]
@@ -32,9 +32,11 @@ public class EnemySpawner : MonoBehaviour {
     void Start() {
         setEnemySpawnPoints();
 
-        //TEST
-        StartEnemySpawner(EnemyType.DEFAULT, 100, 3);
-        StartEnemySpawner(EnemyType.BIG, 100, 10);
+        enemiesSpawnTime.Add(EnemyType.DEFAULT, 3);
+        enemiesSpawnTime.Add(EnemyType.BIG, 10);
+        /* //TEST
+         StartEnemySpawner(EnemyType.DEFAULT, 100, 3);
+         StartEnemySpawner(EnemyType.BIG, 100, 10);*/
     }
 
     protected virtual IEnumerator spawnEnemy(EnemyType enemy) {
@@ -85,6 +87,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void StartEnemySpawner(EnemyType enemy, int numOfEnemies, float? newSpawningTime = null) {
+        print(string.Format("Enemy Type: {0} | Number of enemies to spawn: {1}", enemy, numOfEnemies));
         if (enemiesRemaining.ContainsKey(enemy) && enemiesRemaining[enemy] > 0) {
             throw new System.Exception(string.Format("Trying to Start Enemy Spawn for {0} but there are still {1} enemies left: Coroutine is still in progress.", enemy.ToString(), enemiesRemaining[enemy]));
         }

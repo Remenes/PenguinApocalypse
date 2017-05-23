@@ -13,6 +13,7 @@ public class EnemyDeath : MonoBehaviour
         else
         {
             enemyHealth = GetComponent<Health>();
+            enemyHealth.OnDeath += GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().decrementEnemyCount;
             enemyHealth.OnDeath += EnemyDie;
         }
     }
