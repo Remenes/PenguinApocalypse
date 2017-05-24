@@ -4,6 +4,8 @@ using UnityEngine;
 using System.IO;
 
 public class GameManager : MonoBehaviour {
+    
+    public event Helper.VoidDelegate OnLevelChange = delegate { };
 
     private int currentLevel = 0; // To be increased to one when the game starts
     private int totalLevels;
@@ -11,14 +13,19 @@ public class GameManager : MonoBehaviour {
         get { return currentLevel; }
     }
 
+    public event Helper.VoidDelegate OnEnemiesLeftChange = delegate { };
+
     [SerializeField]
     private EnemySpawner enemySpawner;
     //Enemy count
     private static int enemiesLeft = 0;
+    public int getEnemiesLeft() {
+        return enemiesLeft;
+    }
 
     //List of levels which points to Enemytypes and their amounts
     //Index = 0 would be level 1
-    private List<Dictionary<EnemyType, int>> spawnInfo = new List<Dictionary<EnemyType, int>>();
+    private List<Dictionary<EnemyType, KeyValuePair<int, float?>>> spawnInfo = new List<Dictionary<EnemyType, KeyValuePair<int, float?>>>();
     [SerializeField]
     private TextAsset spawnInfoFile;
     private void readSpawnInfoToList() {
@@ -35,7 +42,7 @@ public class GameManager : MonoBehaviour {
                 if (line.StartsWith("#") || line.Trim().Equals(""))
                     continue;
                 else if (line[0] == '-') {
-                    spawnInfo.Add(new Dictionary<EnemyType, int>());
+                    spawnInfo.Add(new Dictionary<EnemyType, KeyValuePair<int, float?>>());
                     ++totalLevels;
                     continue;
                 }
@@ -44,8 +51,12 @@ public class GameManager : MonoBehaviour {
                 string[] enemySpawnInfo = line.Split(':');
                 EnemyType enemyType = (EnemyType) System.Enum.Parse(typeof(EnemyType), enemySpawnInfo[0]);
                 int enemyAmount = System.Convert.ToInt16(enemySpawnInfo[1]);
-                
-                spawnInfo[totalLevels].Add(enemyType, enemyAmount);
+                float? enemySpawnAmountPerSecond = null;
+                if (enemySpawnInfo.Length > 2) { // Also contains a new timer
+                    enemySpawnAmountPerSecond = (float)(System.Convert.ToInt16(enemySpawnInfo[2]));
+                }
+
+                spawnInfo[totalLevels].Add(enemyType, new KeyValuePair<int, float?>(enemyAmount, enemySpawnAmountPerSecond) );
             }
             ++totalLevels;
 
@@ -68,14 +79,12 @@ public class GameManager : MonoBehaviour {
         increaseLevel();
     }
 
-    void Update() {
-        print("Enemies Left: " + enemiesLeft);
-    }
-
     // --------------------- Extra Methods -----------------
 
     public void decrementEnemyCount() {
         --enemiesLeft;
+
+        OnEnemiesLeftChange();
 
         if (enemiesLeft == 0) {
             StartCoroutine(nextLevel());
@@ -91,18 +100,22 @@ public class GameManager : MonoBehaviour {
 
     private void increaseLevel() {
         currentLevel++;
+
+        OnLevelChange();
+
         if (currentLevel > totalLevels) {
             //Change the exception to something more valuable later on
             throw new System.Exception("Current Level passed Total levels");
         }
         else {
-            foreach (KeyValuePair<EnemyType, int> pair in spawnInfo[currentLevel - 1]) {
+            foreach (var pair in spawnInfo[currentLevel - 1]) {
                 EnemyType enemyType = pair.Key;
-                int enemyAmount = pair.Value;
+                int enemyAmount = pair.Value.Key;
 
                 enemySpawner.StartEnemySpawner(enemyType, enemyAmount);
                 enemiesLeft += enemyAmount;
             }
+            OnEnemiesLeftChange();
         }
     }
 

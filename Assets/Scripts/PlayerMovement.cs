@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         getInputAxis();
-        if (!sprintOn && Input.GetKeyDown(KeyCode.Space))
+        if (!sprintOn && Input.GetKeyDown(SprintKey))
         {
             sprintOn = true;
             speed = SprintSpeed;

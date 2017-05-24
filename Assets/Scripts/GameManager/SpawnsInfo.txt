@@ -8,6 +8,7 @@
 
 ----Level 01----
 DEFAULT:10
+
 ----Level 02----
 DEFAULT:18
 BIG:1
@@ -15,3 +16,28 @@ BIG:1
 ----Level 03----
 DEFAULT:20
 BIG:4
+
+----Level 03----
+DEFAULT:20
+BIG:4
+
+----Level 04----
+DEFAULT:26
+BIG:4
+
+----Level 05----
+DEFAULT:19
+BIG:10
+
+----Level 06----
+DEFAULT:25
+BIG:13
+
+----Level 07----
+DEFAULT:35
+BIG:20
+
+----Level 08----
+DEFAULT:50
+BIG:20
+

@@ -24,7 +24,7 @@ public class PlayerShooting : MonoBehaviour {
         shot_rg = shot.GetComponent<Rigidbody2D>();
         //shot_rg.velocity = new Vector3(0, projectile_speed, 0);
 
-        Vector3 sp = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 sp = Camera.main.WorldToScreenPoint(playerShootingPoint.position);
         Vector3 dir = (Input.mousePosition - sp).normalized;
 
         shot_rg.AddForce(dir*projectile_speed);

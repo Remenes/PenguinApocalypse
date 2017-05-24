@@ -81,7 +81,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5
 --- !u!95 &95348413481851076
 Animator:
   serializedVersion: 3
@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 20
+  hurtParticlesPrefab: {fileID: 0}
+  healParticlesPrefab: {fileID: 0}
 --- !u!114 &114503881703375070
 MonoBehaviour:
   m_ObjectHideFlags: 1
