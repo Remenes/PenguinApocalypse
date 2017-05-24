@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour {
         offset *= speed;
 
         transform.position += offset * Time.deltaTime;
-        flip(horiMovement);
+        flip(Input.mousePosition);
     }
 
     private void getInputAxis() {
@@ -76,9 +76,9 @@ public class PlayerMovement : MonoBehaviour {
         vertMovement = Input.GetAxis("Vertical");
     }
 
-    private void flip(float horizontal)
+    private void flip(Vector3 mousePos)
     {
-        if (horizontal > 0 && facingLeft || horizontal < 0 && !facingLeft)
+        if (mousePos.x > Screen.width/2 && facingLeft || mousePos.x < Screen.width/2 && !facingLeft)
         {
             facingLeft = !facingLeft;
             Vector3 theScale = transform.localScale;
