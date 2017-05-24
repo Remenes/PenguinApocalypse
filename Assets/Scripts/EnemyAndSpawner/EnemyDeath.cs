@@ -26,6 +26,7 @@ public class EnemyDeath : MonoBehaviour
 
     private void OnDestroy()
     {
+        enemyHealth.OnDeath -= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().decrementEnemyCount;
         enemyHealth.OnDeath -= EnemyDie;
     }
 }

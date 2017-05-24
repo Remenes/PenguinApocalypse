@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     protected ParticleSystem hurtParticles;
     protected ParticleSystem healParticles;
-
+    
     protected virtual void Awake ()
     {
         maxHealth = initialHealth;
@@ -68,8 +68,12 @@ public class Health : MonoBehaviour
         }
     }
 
+    private bool hasDied = false; //Just to make sure the onDeath doesn't register multiple times when they get hurt quickly
     public void Die()
     {
-        OnDeath();
+        if (!hasDied) {
+            OnDeath();
+            hasDied = true;
+        }
     }
 }

@@ -49,11 +49,12 @@ public class GameManager : MonoBehaviour {
 
                 //Split the line in the format corresponding to the one told in the text file
                 string[] enemySpawnInfo = line.Split(':');
-                EnemyType enemyType = (EnemyType) System.Enum.Parse(typeof(EnemyType), enemySpawnInfo[0]);
-                int enemyAmount = System.Convert.ToInt16(enemySpawnInfo[1]);
+                EnemyType enemyType = (EnemyType) System.Enum.Parse(typeof(EnemyType), enemySpawnInfo[0].Trim());
+                int enemyAmount = System.Convert.ToInt16(enemySpawnInfo[1].Trim());
                 float? enemySpawnAmountPerSecond = null;
                 if (enemySpawnInfo.Length > 2) { // Also contains a new timer
-                    enemySpawnAmountPerSecond = (float)(System.Convert.ToInt16(enemySpawnInfo[2]));
+                    if (!enemySpawnInfo[2].Trim().Equals(""))
+                        enemySpawnAmountPerSecond = System.Convert.ToInt16(enemySpawnInfo[2].Trim());
                 }
 
                 spawnInfo[totalLevels].Add(enemyType, new KeyValuePair<int, float?>(enemyAmount, enemySpawnAmountPerSecond) );
@@ -111,8 +112,9 @@ public class GameManager : MonoBehaviour {
             foreach (var pair in spawnInfo[currentLevel - 1]) {
                 EnemyType enemyType = pair.Key;
                 int enemyAmount = pair.Value.Key;
+                float? enemySpawnTime = pair.Value.Value;
 
-                enemySpawner.StartEnemySpawner(enemyType, enemyAmount);
+                enemySpawner.StartEnemySpawner(enemyType, enemyAmount, enemySpawnTime);
                 enemiesLeft += enemyAmount;
             }
             OnEnemiesLeftChange();

@@ -6,28 +6,34 @@
 # It's just to give an indication to the us what the level actually is
 # The ----, however, is necessary to keep track of the Levels
 
+# Default spawnTimes are: (Noted as in, spawn every # seconds)
+# DEFAULT: 3
+# BIG: 10
+# If you want to change the spawn time for a current level, then
+# Use the Format: 'EnemyType:Amount:SpawnTime'
+# Otherwise, it will use the previously used SpawnTime
+# SpawnTime must be an integer
+
+# There can be spaces between the numbers and the EnemyType
+
 ----Level 01----
-DEFAULT:10
+DEFAULT: 10:3
 
 ----Level 02----
-DEFAULT:18
-BIG:1
+DEFAULT: 18:3
+BIG: 1: 5
 
 ----Level 03----
 DEFAULT:20
-BIG:4
-
-----Level 03----
-DEFAULT:20
-BIG:4
+BIG:4:	7
 
 ----Level 04----
-DEFAULT:26
+DEFAULT:26:	2
 BIG:4
 
 ----Level 05----
 DEFAULT:19
-BIG:10
+BIG:10:5
 
 ----Level 06----
 DEFAULT:25
