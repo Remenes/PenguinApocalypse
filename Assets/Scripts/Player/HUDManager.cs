@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class HUDManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HUDManager : MonoBehaviour
     public Text ammoNum;
     public GameObject GameOverScreen; //Should be a child of HUD Manager
     public Text scoreText;
+    public EventSystem backupEventSystem;
 
     private PlayerHealth playerHealth;
     private PlayerMovement playerMove;
@@ -34,6 +36,16 @@ public class HUDManager : MonoBehaviour
         {
             Debug.LogWarning("Additional HUD Manager found. It has been destroyed.");
             Destroy(gameObject);
+        }
+
+        //Check for Event System
+        if (!FindObjectOfType<EventSystem>())
+        {
+            backupEventSystem.gameObject.SetActive(true);
+        }
+        else
+        {
+            Destroy(backupEventSystem.gameObject);
         }
 	}
 	

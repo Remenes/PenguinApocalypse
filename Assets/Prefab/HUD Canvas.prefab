@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1487077865019848
 GameObject:
   m_ObjectHideFlags: 1
@@ -1008,6 +1008,7 @@ MonoBehaviour:
   ammoNum: {fileID: 114179632335775746}
   GameOverScreen: {fileID: 1309890466967096}
   scoreText: {fileID: 114123849328590982}
+  backupEventSystem: {fileID: 114330564061085782}
 --- !u!114 &114964634919310720
 MonoBehaviour:
   m_ObjectHideFlags: 1
