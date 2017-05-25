@@ -40,7 +40,7 @@ public class ChasePlayer : MonoBehaviour
         defaultFlipY = spriteRend.flipY;
 
         foundNavMesh = (nav != null);
-        Debug.Log("'Found navmesh' on " + gameObject.name + " = " + foundNavMesh);
+        //Debug.Log("'Found navmesh' on " + gameObject.name + " = " + foundNavMesh);
     }
 	
 	private void FixedUpdate ()

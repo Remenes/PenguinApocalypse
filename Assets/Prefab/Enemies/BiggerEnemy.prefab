@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bb972cebe13a84e835e7aaa340158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 48
+  initialHealth: 60
   hurtParticlesPrefab: {fileID: 0}
   healParticlesPrefab: {fileID: 0}
 --- !u!114 &114494932960917828
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  senseDist: 1000
+  senseDist: 10000
   targetDist: 1.5
   lookAtPlayer: 2
 --- !u!212 &212510233431646104

@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c88adfb2b73c44ba1ffb2154075487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  fireRate: 2
+  damage: 2
+  fireRate: 1
 --- !u!114 &114628680563876538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  senseDist: 500
+  senseDist: 10000
   targetDist: 1.5
   lookAtPlayer: 2
 --- !u!114 &114835715702161324

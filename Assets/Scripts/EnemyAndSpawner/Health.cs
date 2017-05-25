@@ -21,12 +21,16 @@ public class Health : MonoBehaviour
 
         if (hurtParticlesPrefab != null)
         {
-            hurtParticles = Instantiate(hurtParticlesPrefab, Vector3.zero, Quaternion.identity, transform);
+            //Debug.Log("Adding hurt particles for " + gameObject.name);
+            hurtParticles = Instantiate(hurtParticlesPrefab, transform);
+            hurtParticles.transform.localPosition = Vector3.zero;
             hurtParticles.Stop();
         }
         if (healParticlesPrefab != null)
         {
-            healParticles = Instantiate(hurtParticlesPrefab, Vector3.zero, Quaternion.identity, transform);
+            //Debug.Log("Adding heal particles for " + gameObject.name);
+            healParticles = Instantiate(healParticlesPrefab, transform);
+            healParticles.transform.localPosition = Vector3.zero;
             healParticles.Stop();
         }
     }
@@ -43,6 +47,7 @@ public class Health : MonoBehaviour
 
         if (hurtParticles != null)
         {
+            //Debug.Log("Playing hurt particles for " + gameObject.name);
             hurtParticles.Play();
         }
     }

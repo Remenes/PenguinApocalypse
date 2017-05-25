@@ -25,6 +25,9 @@ public class HUD_GameInfo : MonoBehaviour {
 
         gameManager.OnLevelChange += updateLevelText;
         gameManager.OnEnemiesLeftChange += updateEnemiesLeftText;
+
+        updateLevelText();
+        updateEnemiesLeftText();
 	}
 	
 }
