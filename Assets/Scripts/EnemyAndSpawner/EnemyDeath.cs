@@ -3,6 +3,7 @@
 public class EnemyDeath : MonoBehaviour
 {
     private Health enemyHealth;
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -13,7 +14,9 @@ public class EnemyDeath : MonoBehaviour
         else
         {
             enemyHealth = GetComponent<Health>();
-            enemyHealth.OnDeath += GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().decrementEnemyCount;
+
+            gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            enemyHealth.OnDeath += gameManager.decrementEnemyCount;
             enemyHealth.OnDeath += EnemyDie;
         }
     }
@@ -21,12 +24,12 @@ public class EnemyDeath : MonoBehaviour
     private void EnemyDie ()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
-        Destroy(gameObject, /*0.5f*/ 0);
+        Destroy(gameObject, 0.05f);
 	}
 
     private void OnDestroy()
     {
-        enemyHealth.OnDeath -= GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().decrementEnemyCount;
+        enemyHealth.OnDeath -= gameManager.decrementEnemyCount;
         enemyHealth.OnDeath -= EnemyDie;
     }
 }

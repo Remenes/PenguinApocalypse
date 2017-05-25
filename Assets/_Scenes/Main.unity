@@ -226,6 +226,10 @@ Prefab:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1875410555859912, guid: 10d114aa1e64a774994759dfeae3e0b6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10d114aa1e64a774994759dfeae3e0b6, type: 2}
   m_IsPrefabParent: 0
@@ -416,6 +420,56 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224737875396785422, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224737875396785422, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224737875396785422, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 75.10929
+      objectReference: {fileID: 0}
+    - target: {fileID: 224737875396785422, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224737875396785422, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 33.87978
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847496483377944, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847496483377944, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847496483377944, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 151.93988
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847496483377944, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224847496483377944, guid: 2718c7dc3fe979440a8fd99574a70759,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 79.78142
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2718c7dc3fe979440a8fd99574a70759, type: 2}
   m_IsPrefabParent: 0
@@ -493,6 +547,10 @@ Prefab:
     - target: {fileID: 4730703113911270, guid: b9bee29f9e9d9c542aa40937fac8f923, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1373839346384956, guid: b9bee29f9e9d9c542aa40937fac8f923, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9bee29f9e9d9c542aa40937fac8f923, type: 2}
@@ -650,6 +708,12 @@ MonoBehaviour:
   initialHealth: 100
   hurtParticlesPrefab: {fileID: 0}
   healParticlesPrefab: {fileID: 0}
+--- !u!114 &1043137294 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114543251133523696, guid: 07637e08fc100bc4182ba6f85cd66906,
+    type: 2}
+  m_PrefabInternal: {fileID: 1838052047}
+  m_Script: {fileID: 11500000, guid: 7bed67cc6c4c98849a4f3acf498ae4a6, type: 3}
 --- !u!1001 &1156361608
 Prefab:
   m_ObjectHideFlags: 0
@@ -807,6 +871,10 @@ Prefab:
     - target: {fileID: 1078946069662122, guid: 9d16992b232480342929288e10c67b10, type: 2}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078946069662122, guid: 9d16992b232480342929288e10c67b10, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d16992b232480342929288e10c67b10, type: 2}
@@ -971,6 +1039,11 @@ Prefab:
       propertyPath: currentLevel
       value: 
       objectReference: {fileID: 171736547}
+    - target: {fileID: 114865059932002142, guid: 56e8f567848ee0e468a7ce3697a284fe,
+        type: 2}
+      propertyPath: enemySpawner
+      value: 
+      objectReference: {fileID: 1043137294}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56e8f567848ee0e468a7ce3697a284fe, type: 2}
   m_IsPrefabParent: 0
