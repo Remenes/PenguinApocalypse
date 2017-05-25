@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour {
         else if (sprintOn && timer < SprintTime)
         {
             timer += Time.deltaTime;
+
+            HUDManager.reference.UpdateSprintBar(timer);
         }
 
         if (timer > SprintTime)
@@ -47,6 +49,8 @@ public class PlayerMovement : MonoBehaviour {
             sprintOn = false;
             timer = 0;
             speed = MoveSpeed;
+            
+            HUDManager.reference.UpdateSprintBar(0);
         }
         movePlayer();
 

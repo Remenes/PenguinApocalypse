@@ -19,7 +19,8 @@ public class PlayerDeath : MonoBehaviour
 
 	private void PlayerDie ()
     {
-        Debug.Log("YOU DIED!");
+        //Debug.Log("YOU DIED!");
+        HUDManager.reference.GameOver();
     }
 
     private void OnDestroy()
