@@ -10,10 +10,13 @@ public class Health : MonoBehaviour
     protected float initialHealth; //For now, maybe change to better method later
     public ParticleSystem hurtParticlesPrefab;
     public ParticleSystem healParticlesPrefab; //Particle systems need to be set to not loop
+    public AudioClip hurtSound;
+    public AudioClip healSound;
 
     protected ParticleSystem hurtParticles;
     protected ParticleSystem healParticles;
-    
+    protected new AudioSource audio;
+
     protected virtual void Awake ()
     {
         maxHealth = initialHealth;
@@ -33,6 +36,12 @@ public class Health : MonoBehaviour
             healParticles.transform.localPosition = Vector3.zero;
             healParticles.Stop();
         }
+
+        audio = GetComponentInChildren<AudioSource>();
+        if (audio != null && (hurtSound == null || healSound == null))
+        {
+            Debug.LogWarning("Please add sounds to Health on " + gameObject.name, this);
+        }
     }
 	
 	public virtual void TakeDamage (float amount)
@@ -49,6 +58,15 @@ public class Health : MonoBehaviour
         {
             //Debug.Log("Playing hurt particles for " + gameObject.name);
             hurtParticles.Play();
+        }
+
+        if(audio != null && !audio.isPlaying)
+        {
+            if (audio.clip != hurtSound && hurtSound != null)
+            {
+                audio.clip = hurtSound;
+            }
+            audio.Play();
         }
     }
 
@@ -70,6 +88,15 @@ public class Health : MonoBehaviour
         if (healParticles != null)
         {
             healParticles.Play();
+        }
+
+        if (audio != null && !audio.isPlaying)
+        {
+            if (audio.clip != healSound && healSound != null)
+            {
+                audio.clip = healSound;
+            }
+            audio.Play();
         }
     }
 

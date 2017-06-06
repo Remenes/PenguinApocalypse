@@ -27,7 +27,8 @@ GameObject:
   - component: {fileID: 114835715702161324}
   - component: {fileID: 58478461935338656}
   - component: {fileID: 95348413481851076}
-  m_Layer: 0
+  - component: {fileID: 82478104057441240}
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -82,6 +83,87 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!82 &82478104057441240
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1078946069662122}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243076928899731998, guid: b4a86bffd9c102848b7df23cb09cd112,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 96a9ed568573a6b4c8e1fe04a69354b9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
+  m_Pitch: 1.5
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95348413481851076
 Animator:
   serializedVersion: 3
@@ -111,8 +193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 20
-  hurtParticlesPrefab: {fileID: 0}
+  hurtParticlesPrefab: {fileID: 198611774925727032, guid: ee6ee8db9ac955341bb10545ecf2e3bd,
+    type: 2}
   healParticlesPrefab: {fileID: 0}
+  hurtSound: {fileID: 8300000, guid: e1d9dc02bc1355b4d9d4ff84e6f03e2e, type: 3}
+  healSound: {fileID: 8300000, guid: 96a9ed568573a6b4c8e1fe04a69354b9, type: 3}
 --- !u!114 &114503881703375070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c88adfb2b73c44ba1ffb2154075487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  fireRate: 1
+  damage: 1
+  fireRate: 0.5
 --- !u!114 &114628680563876538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b68790a75d69c48adfe85c44f84414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
   senseDist: 10000
   targetDist: 1.5
   lookAtPlayer: 2

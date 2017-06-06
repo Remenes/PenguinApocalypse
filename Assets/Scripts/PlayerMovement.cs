@@ -8,13 +8,17 @@ public class PlayerMovement : MonoBehaviour {
     private float vertMovement;
     private bool facingLeft;
     private bool sprintOn;
+    private bool sprintCooled = false;
     private float speed;
     private float timer;
+    private float lastSprint = -10.0f; //Time the last sprint ended
 
     public float MoveSpeed = 5f;
     public float SprintSpeed = 20f;
     public KeyCode SprintKey = KeyCode.Space;
     public float SprintTime = 1f;
+    public float SprintCooldown = 3f;
+    public SpriteRenderer background;
 
     public bool is3D = false;
     
@@ -30,30 +34,42 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         getInputAxis();
-        if (!sprintOn && Input.GetKeyDown(SprintKey))
+        if (!sprintOn && Input.GetKeyDown(SprintKey) && sprintCooled) //Start sprinting
         {
             sprintOn = true;
+            sprintCooled = false;
             speed = SprintSpeed;
             timer = 0;
         }
-
-        else if (sprintOn && timer < SprintTime)
+        else if (sprintOn && timer < SprintTime) //Keep sprinting
         {
             timer += Time.deltaTime;
 
-            HUDManager.reference.UpdateSprintBar(timer);
+            HUDManager.reference.UpdateSprintBar(timer, SprintTime, false);
         }
 
-        if (timer > SprintTime)
+        if (timer > SprintTime) //Stop sprinting
         {
             sprintOn = false;
             timer = 0;
             speed = MoveSpeed;
+            lastSprint = Time.time;
             
-            HUDManager.reference.UpdateSprintBar(0);
+            //HUDManager.reference.UpdateSprintBar(0);
         }
         movePlayer();
 
+        float timeSinceLastSprint = Time.time - lastSprint;
+        if(timeSinceLastSprint < SprintCooldown) //Sprint is still cooling down
+        {
+            HUDManager.reference.UpdateSprintBar(timeSinceLastSprint, SprintCooldown, true);
+        }
+        else if (!sprintOn) //Sprint ass cooled down
+        {
+            sprintCooled = true;
+
+            HUDManager.reference.UpdateSprintBar(1, 1, true);
+        }
     }
 
     private void movePlayer() {
@@ -69,8 +85,13 @@ public class PlayerMovement : MonoBehaviour {
         if (offset.sqrMagnitude > 1)
             Vector3.Normalize(offset);
         offset *= speed;
+        Vector3 newPos = transform.position + offset * Time.deltaTime;
 
-        transform.position += offset * Time.deltaTime;
+        if (background.bounds.Contains(newPos))
+        {
+            transform.position = newPos;
+        }
+        //transform.position += offset * Time.deltaTime;
         flip(Input.mousePosition);
     }
 

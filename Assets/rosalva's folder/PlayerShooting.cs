@@ -11,10 +11,14 @@ public class PlayerShooting : MonoBehaviour {
 
 
     private Transform playerShootingPoint;
+    private AudioSource sound;
+    private float soundBasePitch;
 
 	// Use this for initialization
 	void Start () {
         playerShootingPoint = transform.GetChild(0);
+        sound = playerShootingPoint.GetComponent<AudioSource>();
+        soundBasePitch = sound.pitch;
 	}
 
     void Fire()
@@ -28,18 +32,34 @@ public class PlayerShooting : MonoBehaviour {
         Vector3 dir = (Input.mousePosition - sp).normalized;
 
         shot_rg.AddForce(dir*projectile_speed);
-
-
+        
 		shot_rg.velocity = dir*projectile_speed;
 		Destroy (shot, 3f);
+
+        sound.pitch = soundBasePitch + Random.Range(-0.1f, 0.1f);
+    }
+
+    void MakeSound ()
+    {
+        Debug.Log(sound.clip.name);
+        sound.Play();
     }
 
 	
 	void Update () {
         if (Input.GetMouseButtonDown(0))
-          InvokeRepeating("Fire", 0.00001f, repeat_rate);
+        {
+            InvokeRepeating("Fire", 0, repeat_rate);
+            //InvokeRepeating("MakeSound", 0, repeat_rate * 2);
+            sound.Play();
+        }
+
         if (Input.GetMouseButtonUp(0))
-          CancelInvoke("Fire");
+        {
+            CancelInvoke("Fire");
+            //CancelInvoke("MakeSound");
+            sound.Stop();
+        }
 
         //transform.Translate(Vector3.forward * Time.deltaTime);
     }

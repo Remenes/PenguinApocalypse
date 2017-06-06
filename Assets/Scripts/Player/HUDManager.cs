@@ -54,9 +54,16 @@ public class HUDManager : MonoBehaviour
         healthBar.fillAmount = playerHealth.currentHealth / playerHealth.maxHealth;
 	}
 
-    public void UpdateSprintBar (float curSprintTime)
+    public void UpdateSprintBar (float curSprintTime, float maxSprintTime, bool isCooldown)
     {
-        sprintBar.fillAmount = 1 - curSprintTime / playerMove.SprintTime;
+        if (!isCooldown)
+        {
+            sprintBar.fillAmount = 1 - curSprintTime / maxSprintTime;
+        }
+        else
+        {
+            sprintBar.fillAmount = curSprintTime / maxSprintTime;
+        }
     }
 
     public void UpdateAmmoNum (/*float amount*/)
