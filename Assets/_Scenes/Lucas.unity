@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 1498310161}
   - component: {fileID: 1498310165}
   - component: {fileID: 1498310164}
+  - component: {fileID: 1498310166}
   m_Layer: 0
   m_Name: BoxedBulletUp(UpsideDown)
   m_TagString: Untagged
@@ -370,6 +371,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 10
+--- !u!114 &1498310166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1498310160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2520742a58d4e44b055d2315c09743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1854847560
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +471,8 @@ MonoBehaviour:
   SprintSpeed: 20
   SprintKey: 32
   SprintTime: 1
+  SprintCooldown: 3
+  background: {fileID: 0}
   is3D: 0
 --- !u!65 &1854847564
 BoxCollider:
@@ -484,6 +498,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 100
+  hurtParticlesPrefab: {fileID: 0}
+  healParticlesPrefab: {fileID: 0}
+  hurtSound: {fileID: 0}
+  healSound: {fileID: 0}
 --- !u!54 &1854847566
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -2,9 +2,11 @@
 
 public class Health : MonoBehaviour
 {
+    public Rigidbody HealthPack;
     public float currentHealth { get; protected set; }
     public float maxHealth { get; protected set; }
     public event Helper.VoidDelegate OnDeath;
+    public bool spawnHealth = false;
 
     [SerializeField]
     protected float initialHealth; //For now, maybe change to better method later
@@ -106,6 +108,10 @@ public class Health : MonoBehaviour
         if (!hasDied) {
             OnDeath();
             hasDied = true;
+        }
+        if (spawnHealth == true && Random.Range(1, 10) == 1)
+        {
+            Instantiate(HealthPack);
         }
     }
 }
