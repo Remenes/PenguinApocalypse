@@ -192,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bb972cebe13a84e835e7aaa340158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnHealth: 1
+  HealthPackOdds: 10
   initialHealth: 60
   hurtParticlesPrefab: {fileID: 198611774925727032, guid: ee6ee8db9ac955341bb10545ecf2e3bd,
     type: 2}

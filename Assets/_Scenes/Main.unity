@@ -607,7 +607,7 @@ CapsuleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 367902498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -708,11 +708,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d909baa144e9c4baeb4eec67f6b7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthPack: {fileID: 1845515662118758, guid: 2d26f4df5f6949544881766312fb614c, type: 2}
+  spawnHealth: 0
+  HealthPackOdds: 10
   initialHealth: 100
   hurtParticlesPrefab: {fileID: 0}
   healParticlesPrefab: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: eec30a2b84132e040b5808fba1258a6b, type: 3}
   healSound: {fileID: 8300000, guid: 3b69a2e4d278df44982f00d0209094be, type: 3}
+  hpack: {fileID: 1845515662118758, guid: 2d26f4df5f6949544881766312fb614c, type: 2}
 --- !u!1001 &384639389
 Prefab:
   m_ObjectHideFlags: 0
@@ -909,6 +913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bb972cebe13a84e835e7aaa340158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthPack: {fileID: 0}
+  spawnHealth: 1
+  HealthPackOdds: 10
   initialHealth: 100
   hurtParticlesPrefab: {fileID: 0}
   healParticlesPrefab: {fileID: 0}
@@ -1344,8 +1351,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1078946069662122, guid: 9d16992b232480342929288e10c67b10, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114397130387545774, guid: 9d16992b232480342929288e10c67b10,
+        type: 2}
+      propertyPath: spawnHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114397130387545774, guid: 9d16992b232480342929288e10c67b10,
+        type: 2}
+      propertyPath: HealthPack
+      value: 
+      objectReference: {fileID: 1265371338595730, guid: 250fd2343dfacc24881596a70dd04b40,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d16992b232480342929288e10c67b10, type: 2}
   m_IsPrefabParent: 0
