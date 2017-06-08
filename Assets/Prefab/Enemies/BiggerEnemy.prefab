@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bb972cebe13a84e835e7aaa340158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthPack: {fileID: 0}
   spawnHealth: 1
   HealthPackOdds: 10
   initialHealth: 60
@@ -211,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40aafdc056d0982478e5fb514184ad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointValue: 3
 --- !u!114 &114864841180554290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c88adfb2b73c44ba1ffb2154075487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 7
   fireRate: 1
 --- !u!114 &114968791328968932
 MonoBehaviour:
@@ -235,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b68790a75d69c48adfe85c44f84414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 11
   senseDist: 10000
   targetDist: 1.5
   lookAtPlayer: 2

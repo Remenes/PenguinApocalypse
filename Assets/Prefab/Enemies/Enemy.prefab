@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c88adfb2b73c44ba1ffb2154075487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   fireRate: 0.5
 --- !u!114 &114628680563876538
 MonoBehaviour:
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b68790a75d69c48adfe85c44f84414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 14
   senseDist: 10000
   targetDist: 1.5
   lookAtPlayer: 2
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40aafdc056d0982478e5fb514184ad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointValue: 1
 --- !u!212 &212232792754876956
 SpriteRenderer:
   m_ObjectHideFlags: 1
