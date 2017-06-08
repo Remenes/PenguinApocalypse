@@ -4,6 +4,7 @@ public class PlayerHealth : Health
 {
 
     private HUDManager hud;
+    public GameObject hpack;
 
     protected override void Awake()
     {
@@ -28,5 +29,13 @@ public class PlayerHealth : Health
         hud.UpdateHealthBar();
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(hpack.tag))
+        {
+            Heal(collision.gameObject.GetComponent<HealthPickUp>().health);
+            Destroy(collision.gameObject);
+        }
+    }
 
 }

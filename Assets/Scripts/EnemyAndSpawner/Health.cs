@@ -2,11 +2,12 @@
 
 public class Health : MonoBehaviour
 {
-    public Rigidbody HealthPack;
+    public GameObject HealthPack;
     public float currentHealth { get; protected set; }
     public float maxHealth { get; protected set; }
     public event Helper.VoidDelegate OnDeath;
     public bool spawnHealth = false;
+    public int HealthPackOdds = 10; //1 in "odds" chance that this enemy will spawn a healthpack
 
     [SerializeField]
     protected float initialHealth; //For now, maybe change to better method later
@@ -109,9 +110,9 @@ public class Health : MonoBehaviour
             OnDeath();
             hasDied = true;
         }
-        if (spawnHealth == true && Random.Range(1, 10) == 1)
+        if (spawnHealth == true && Random.Range(1, HealthPackOdds+1) == 1)
         {
-            Instantiate(HealthPack);
+            Instantiate(HealthPack, transform.position, Quaternion.identity);
         }
     }
 }
