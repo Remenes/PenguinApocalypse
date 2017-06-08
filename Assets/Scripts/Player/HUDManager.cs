@@ -7,16 +7,18 @@ public class HUDManager : MonoBehaviour
 {
     public static HUDManager reference;
 
-    public Image healthBar;
-    public Image sprintBar;
-    public Text ammoNum;
-    public GameObject GameOverScreen; //Should be a child of HUD Manager
-    public Text scoreText;
-    public EventSystem backupEventSystem;
-
     private PlayerHealth playerHealth;
     private PlayerMovement playerMove;
     private PlayerShooting playerShoot;
+
+    //These should be children of HUD Manager
+    public Image healthBar;
+    public Image sprintBar;
+    public Text ammoNum;
+    public GameObject GameOverScreen;
+    public Text scoreText;
+    public EventSystem backupEventSystem;
+    public ScoreSystem scorer;
 	
 	void Awake ()
     {
@@ -24,6 +26,10 @@ public class HUDManager : MonoBehaviour
         playerHealth = player.GetComponent<PlayerHealth>();
         playerShoot = player.GetComponent<PlayerShooting>();
         playerMove = player.GetComponent<PlayerMovement>();
+        if (scorer == null)
+        {
+            scorer = FindObjectOfType<ScoreSystem>();
+        }
 
         GameOverScreen.SetActive(false);
 
@@ -32,7 +38,7 @@ public class HUDManager : MonoBehaviour
         {
             reference = this;
         }
-        else if(reference != this)
+        else if(reference != this && reference != this)
         {
             Debug.LogWarning("Additional HUD Manager found. It has been destroyed.");
             Destroy(gameObject);
@@ -75,6 +81,8 @@ public class HUDManager : MonoBehaviour
     public void GameOver()
     {
         GameOverScreen.SetActive(true);
+        scorer.DisplayHighscores();
+
         Time.timeScale = 0;
     }
 

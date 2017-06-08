@@ -2,6 +2,8 @@
 
 public class EnemyDeath : MonoBehaviour
 {
+    public float pointValue;
+
     private Health enemyHealth;
     private GameManager gameManager;
 
@@ -23,7 +25,9 @@ public class EnemyDeath : MonoBehaviour
 
     private void EnemyDie ()
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<SpriteRenderer>().color = Color.red; //Death effect
+        HUDManager.reference.scorer.ChangeScore(pointValue); //Add points
+
         Destroy(gameObject, 0.05f);
 	}
 
